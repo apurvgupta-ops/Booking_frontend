@@ -4,6 +4,8 @@ import { TbPlaneInflight } from "react-icons/tb";
 import { GiWitchFlight } from "react-icons/gi";
 import { AiOutlineCar } from "react-icons/ai";
 import { MdAirportShuttle, MdOutlineAttractions } from "react-icons/md";
+import Title from "./Title";
+import Calender from "./Calender";
 
 const icons = [
   {
@@ -32,9 +34,10 @@ const icons = [
   },
 ];
 
-const Header = () => {
+const Header = ({ type }) => {
+  // console.log(type);
   return (
-    <div className="mt-8 flex ">
+    <div className={`mt-8 ${type ? "pb-10" : "pb-0"}`}>
       <div className="flex gap-10 ">
         {icons.map((icon, index) => (
           <button
@@ -45,6 +48,14 @@ const Header = () => {
             <p className="text-lg text-white">{icon.title}</p>
           </button>
         ))}
+      </div>
+      <div className="">
+        {!type && (
+          <>
+            <Title />
+            <Calender />
+          </>
+        )}
       </div>
     </div>
   );

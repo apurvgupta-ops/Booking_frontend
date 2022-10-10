@@ -40,7 +40,7 @@ const Calender = () => {
         />
       </div>
       {/* CALENDER */}
-      <div className="flex bg-white w-[30%] items-center p-1 relative border-r-4 border-yellow-500">
+      <div className="flex bg-white w-[30%] items-center p-1 relative border-r-4 border-yellow-500 z-10">
         <FaCalendar size={30} />
         <span
           onClick={() => setOpenDate(!openDate)}
@@ -60,7 +60,7 @@ const Calender = () => {
         )}
       </div>
       {/* PERSONS */}
-      <div className="flex bg-white w-[30%] items-center p-1 border-r-4 border-yellow-500 relative">
+      <div className="flex bg-white w-[30%] items-center p-1 border-r-4 border-yellow-500 relative z-10">
         <MdOutlinePersonAddAlt1 size={30} />
         <div className="flex m-auto px-2">
           <span
