@@ -1,10 +1,13 @@
 import React from "react";
 import Calender from "../Components/Calender";
 import FeaturedHotels from "../Components/FeaturedHotels";
+import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import NavBar from "../Components/NavBar";
 import PropertyType from "../Components/PropertyType";
+import Subscription from "../Components/Subscription";
 import Title from "../Components/Title";
+import Travellers from "../Components/Travellers";
 const Home = () => {
   return (
     <>
@@ -19,6 +22,11 @@ const Home = () => {
       <div className="max-w-[80%] mt-12 m-auto ">
         <FeaturedHotels />
         <PropertyType />
+        <Travellers />
+      </div>
+      <div className="mt-10 w-screen bg-[#00224f]">
+        <Subscription />
+        {/* <Footer /> */}
       </div>
     </>
   );

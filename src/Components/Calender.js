@@ -30,7 +30,7 @@ const Calender = () => {
     });
   };
   return (
-    <div className="flex absolute w-[80%] top-56 mt-10 border-4 border-yellow-500 rounded-md">
+    <div className="flex absolute w-[80%] top-[275px] mt-10 border-4 border-yellow-500 rounded-md">
       {/* INPUT */}
       <div className="flex bg-white w-[30%] items-center p-1 border-r-4 border-yellow-500">
         <FaBed size={30} />
