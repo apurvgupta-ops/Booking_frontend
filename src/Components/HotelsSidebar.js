@@ -16,17 +16,17 @@ const HotelsSidebar = () => {
   const location = useLocation();
   console.log(location);
   return (
-    <div className="mt-10">
-      <div className="bg-yellow-400 w-[20%] rounded-md">
+    <div className="mt-10 w-[28%]">
+      <div className="bg-yellow-400 rounded-md">
         <h1 className="p-2 font-bold text-2xl">Search</h1>
         <div>
           <small className="px-2">Destination / Property Name</small>
-          <div className="flex gap-2 pt-1 justify-center items-center">
+          <div className="flex gap-1 pt-1 justify-center items-center">
             <BiSearchAlt className="" size={20} />
             <input
               type="text"
               placeholder={location.state.destination}
-              className="p-1 rounded-md px-2"
+              className="p-1 rounded-md px-1 m-2"
             />
           </div>
         </div>
@@ -108,7 +108,7 @@ const HotelsSidebar = () => {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <button className="bg-[#003580] text-xl mb-4 text-white p-2 px-4 rounded-md">
+          <button className="bg-[#0071ca] text-xl mb-4 text-white p-2 px-8 rounded-md">
             Search
           </button>
         </div>

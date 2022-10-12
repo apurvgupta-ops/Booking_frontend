@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
+import HotelList from "../Components/HotelList";
 import HotelsSidebar from "../Components/HotelsSidebar";
 import NavBar from "../Components/NavBar";
 
@@ -12,8 +13,9 @@ const Hotels = () => {
           <Header type="hotels" />
         </div>
       </div>
-      <div className="max-w-[80%] m-auto ">
+      <div className="flex w-full gap-8 max-w-[80%] m-auto ">
         <HotelsSidebar />
+        <HotelList />
       </div>
     </>
   );
