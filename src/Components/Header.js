@@ -6,6 +6,7 @@ import { AiOutlineCar } from "react-icons/ai";
 import { MdAirportShuttle, MdOutlineAttractions } from "react-icons/md";
 import Title from "./Title";
 import Calender from "./Calender";
+import { useLocation } from "react-router-dom";
 
 const icons = [
   {
@@ -36,6 +37,8 @@ const icons = [
 
 const Header = ({ type }) => {
   // console.log(type);
+  const location = useLocation();
+  console.log(location);
   return (
     <div className={`mt-8 ${type ? "pb-10" : "pb-0"}`}>
       <div className="flex gap-10 ">
