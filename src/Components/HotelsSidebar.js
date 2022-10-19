@@ -16,7 +16,7 @@ const HotelsSidebar = () => {
   const location = useLocation();
   console.log(location);
   return (
-    <div className="mt-10 w-[28%]">
+    <div className="mt-6 w-[28%]">
       <div className="bg-yellow-400 rounded-md">
         <h1 className="p-2 font-bold text-2xl">Search</h1>
         <div>
@@ -103,7 +103,7 @@ const HotelsSidebar = () => {
               type="number"
               placeholder={location.state.options.room}
               min={1}
-              className="rounded-md mb-6 px-2 outline-none"
+              className="rounded-md mb-4 px-2 outline-none"
             />
           </div>
         </div>
