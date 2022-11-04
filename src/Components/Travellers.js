@@ -13,6 +13,17 @@ const Travellers = () => {
             src={image}
             className="w-full h-full overflow-hidden rounded-md"
           />
+          <div>
+            <p className="font-bold text-xl ">Neemrana Hotel</p>
+            <p>Alwar</p>
+            <p className="font-bold text-md ">Starting from 1000RS</p>
+            <p className="mt-1">
+              Excellent{" "}
+              <span className="bg-blue-800 rounded text-sm p-1 text-white">
+                8.9
+              </span>
+            </p>
+          </div>
         </div>
         <div className="w-1/3">
           <img
@@ -20,6 +31,17 @@ const Travellers = () => {
             src={image}
             className="w-full h-full overflow-hidden rounded-md"
           />
+          <div>
+            <p className="font-bold text-xl ">Neemrana Hotel</p>
+            <p>Alwar</p>
+            <p className="font-bold text-md ">Starting from 1000RS</p>
+            <p className="mt-1">
+              Excellent{" "}
+              <span className="bg-blue-800 rounded text-sm p-1 text-white">
+                8.9
+              </span>
+            </p>
+          </div>
         </div>
         <div className="w-1/3">
           <img
@@ -27,6 +49,17 @@ const Travellers = () => {
             src={image}
             className="w-full h-full overflow-hidden rounded-md"
           />
+          <div>
+            <p className="font-bold text-xl ">Neemrana Hotel</p>
+            <p>Alwar</p>
+            <p className="font-bold text-md ">Starting from 1000RS</p>
+            <p className="mt-1">
+              Excellent{" "}
+              <span className="bg-blue-800 rounded text-sm p-1 text-white">
+                8.9
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>

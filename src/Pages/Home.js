@@ -24,7 +24,7 @@ const Home = () => {
         <PropertyType />
         <Travellers />
       </div>
-      <div className="mt-10 w-screen bg-[#00224f]">
+      <div className="mt-32 w-screen bg-[#00224f]">
         <Subscription />
         {/* <Footer /> */}
       </div>

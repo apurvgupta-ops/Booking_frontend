@@ -1,6 +1,10 @@
 import React from "react";
+import useFetch from "../Hooks/useFetch";
 import hotel from "../Image/globle.jpg";
+
 const PropertyType = () => {
+  const { data, loading, error } = useFetch("/hotels/hoteltype");
+  console.log(data);
   return (
     <div className="mt-10">
       <div>
@@ -10,50 +14,23 @@ const PropertyType = () => {
         </p>
       </div>
       <div className="relative flex gap-2 mt-6">
-        <div className="w-1/4">
-          <img
-            src={hotel}
-            alt=""
-            className="rounded-lg w-full h-60 overflow-hidden"
-          />
-          <div>
-            <h3 className="text-black text-2xl font-bold">Hotels</h3>
-            <p>100 Hotels</p>
+        {data.map((d, i) => (
+          <div className="w-1/4" key={i}>
+            <img
+              src={hotel}
+              alt=""
+              className="rounded-lg w-full h-60 overflow-hidden"
+            />
+            <div>
+              <h3 className="text-black text-2xl font-bold capitalize">
+                {data[i]?.type}
+              </h3>
+              <p>
+                {data[i]?.count} {data[i]?.type}
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="w-1/4">
-          <img
-            src={hotel}
-            alt=""
-            className=" rounded-lg w-full h-60 overflow-hidden"
-          />
-          <div>
-            <h3 className="text-black  text-2xl font-bold">Apartments</h3>
-            <p>100 Apartments</p>
-          </div>
-        </div>
-        <div className="w-1/4">
-          <img
-            src={hotel}
-            alt=""
-            className=" rounded-lg w-full h-60  overflow-hidden"
-          />
-          <div>
-            <h3 className="text-black text-2xl font-bold">Resorts</h3>
-            <p>100 Resorts</p>
-          </div>
-        </div>
-        <div className="w-1/4">
-          <img
-            src={hotel}
-            alt=""
-            className=" rounded-lg w-full h-60 overflow-hidden"
-          />
-          <div>
-            <h3 className="text-black text-2xl font-bold">villas</h3>
-            <p>100 villas</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
