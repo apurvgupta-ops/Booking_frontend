@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
@@ -7,6 +7,7 @@ import { FaBed, FaCalendar, FaPersonBooth } from "react-icons/fa";
 import { MdOutlinePersonAddAlt1 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
+import { SearchContext } from "../Context/SearchContextProvider";
 
 const Calender = () => {
   const [destination, setDestination] = useState("");
@@ -14,7 +15,7 @@ const Calender = () => {
 
   const navigate = useNavigate();
 
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -27,9 +28,11 @@ const Calender = () => {
     children: 0,
     room: 1,
   });
+  const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    navigate("/hotels", { state: { destination, date, options } });
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
   };
 
   const handleOptions = (name, operation) => {
@@ -60,17 +63,17 @@ const Calender = () => {
             setOpenOptions(false);
           }}
           className="w-full tracking-wide flex justify-evenly"
-        >{`${format(date[0].startDate, "dd/MM/yyyy")} To ${format(
-          date[0].endDate,
+        >{`${format(dates[0].startDate, "dd/MM/yyyy")} To ${format(
+          dates[0].endDate,
           "dd/MM/yyyy"
         )}`}</span>
         {openDate && (
           <DateRange
             className="absolute top-12 w-full "
             editableDateInputs={true}
-            onChange={(item) => setDate([item.selection])}
+            onChange={(item) => setDates([item.selection])}
             moveRangeOnFirstSelection={false}
-            ranges={date}
+            ranges={dates}
           />
         )}
       </div>
@@ -161,7 +164,7 @@ const Calender = () => {
         )}
       </div>
       <div className="bg-[#3287fd] w-[10%] text-white text-2xl flex justify-center ">
-        <button  onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch}>Search</button>
       </div>
     </div>
   );

@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 
 import { BrowserRouter } from "react-router-dom";
-import PhoneBook from "./PhoneBook";
+// import PhoneBook from "./PhoneBook";
+import { SearchContexProvider } from "./Context/SearchContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <App />
-    {/* <PhoneBook /> */}
-  </BrowserRouter>
+  <SearchContexProvider>
+    <BrowserRouter>
+      <App />
+      {/* <PhoneBook /> */}
+    </BrowserRouter>
+  </SearchContexProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

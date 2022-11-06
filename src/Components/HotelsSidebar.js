@@ -6,7 +6,7 @@ import { DateRange } from "react-date-range";
 import { FaCalendar } from "react-icons/fa";
 const HotelsSidebar = () => {
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -41,8 +41,8 @@ const HotelsSidebar = () => {
                 }}
                 className="px-3 py-1 rounded-md text-sm bg-white"
               >
-                {`${format(date[0].startDate, "dd/MM/yyyy")} To ${format(
-                  date[0].endDate,
+                {`${format(dates[0].startDate, "dd/MM/yyyy")} To ${format(
+                  dates[0].endDate,
                   "dd/MM/yyyy"
                 )}`}
               </span>
@@ -50,9 +50,9 @@ const HotelsSidebar = () => {
                 {openDate && (
                   <DateRange
                     className=""
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     minDate={new Date()}
-                    ranges={date}
+                    ranges={dates}
                   />
                 )}
               </div>
@@ -61,24 +61,24 @@ const HotelsSidebar = () => {
         </div>
         <small className="px-2">Options </small>
         <div className="px-2">
-          <div>
-            <span>
-              Min Price <small>per night : </small>
-            </span>
-            <input
-              type="number"
-              className="rounded-md px-2 mb-2 outline-none"
-            />
-          </div>
-          <div>
-            <span>
-              Max Price <small>per night :</small>
-            </span>
-            <input
-              type="number"
-              className=" mb-2 rounded-md px-2 outline-none"
-            />
-          </div>
+          {/* <div>
+              <span>
+                Min Price <small>per night : </small>
+              </span>
+              <input
+                type="number"
+                className="rounded-md px-2 mb-2 outline-none"
+              />
+            </div>
+            <div>
+              <span>
+                Max Price <small>per night :</small>
+              </span>
+              <input
+                type="number"
+                className=" mb-2 rounded-md px-2 outline-none"
+              />
+            </div> */}
           <div className="">
             <span className="mr-2">Adults</span>
             <input

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsArrowLeftSquareFill } from "react-icons/bs";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FaWindowClose } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { SearchContext } from "../Context/SearchContextProvider";
 import useFetch from "../Hooks/useFetch";
 import pic1 from "../Image/pic 1.jpg";
 import pic2 from "../Image/pic 2.jpg";
@@ -23,9 +24,11 @@ const images = [
 
 const HotelDetail = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const { data, error, loading } = useFetch(`/hotels/find/${id}`);
   // console.log(data);
+  const { city, dates, options } = useContext(SearchContext);
+  // console.log(dates);
   const [sliderNo, setSliderNo] = useState(0);
   const [openSlider, setOpenSlider] = useState(false);
   const handleOpen = (i) => {
@@ -88,24 +91,36 @@ const HotelDetail = () => {
             <img
               src={image.image}
               alt=""
-              className="w-[399px]"
+              className="w-[399px] cursor-pointer"
               onClick={() => handleOpen(i)}
             />
           ))}
         </div>
-        <div className="mb-8">
-          Offering outdoor pool, Neemrana's - Hill Fort - Kesroli is located in
-          Alwar. Free Wi-Fi access is available. Rooms here will provide you
-          with air conditioning. Private bathrooms also come with a shower. Some
-          rooms have a garden view. Extras include a desk. At Neemrana's - Hill
-          Fort - Kesroli you will find a 24-hour front desk, a garden and
-          barbeque facilities. Other facilities offered include meeting
-          facilities, a games room and a tour desk. The property is located 70
-          km from Sarska Tiger Sanctuary and 29 km from Siliserh Lake. Bhangarh
-          Fort is a 100 km away where as Bharatpur Bird Sanctuary is 112 km
-          away. Indira Gandhi International Airport is 140 km away. Alwar
-          Railway Station is 12 km away. Couples particularly like the location
-          — they rated it 8.0 for a two-person trip.
+        <div className="flex gap-6">
+          <div className="mb-8 w-fit">
+            Offering outdoor pool, Neemrana's - Hill Fort - Kesroli is located
+            in Alwar. Free Wi-Fi access is available. Rooms here will provide
+            you with air conditioning. Private bathrooms also come with a
+            shower. Some rooms have a garden view. Extras include a desk. At
+            Neemrana's - Hill Fort - Kesroli you will find a 24-hour front desk,
+            a garden and barbeque facilities. Other facilities offered include
+            meeting facilities, a games room and a tour desk. The property is
+            located 70 km from Sarska Tiger Sanctuary and 29 km from Siliserh
+            Lake. Bhangarh Fort is a 100 km away where as Bharatpur Bird
+            Sanctuary is 112 km away. Indira Gandhi International Airport is 140
+            km away. Alwar Railway Station is 12 km away. Couples particularly
+            like the location — they rated it 8.0 for a two-person trip.
+          </div>
+          <div className="bg-blue-100 p-4 rounded flex flex-col gap-4 justify-center">
+            <h4 className="font-bold">Perfect for a 9-night stay!</h4>
+            <p>located near to railway station excellent location 9.8 rating</p>
+            <h1 className="font-bold text-xl">
+              1000 Rs <span>(9 nights)</span>
+            </h1>
+            <button className="bg-[#3287fd] p-2 rounded text-white">
+              Reserve or Book Now!
+            </button>
+          </div>
         </div>
       </div>
       {/* <div className="bg-[#003580] w-screen">
