@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
@@ -6,10 +6,14 @@ import { DateRange } from "react-date-range";
 import { FaBed, FaCalendar, FaPersonBooth } from "react-icons/fa";
 import { MdOutlinePersonAddAlt1 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import useFetch from "../Hooks/useFetch";
+
 const Calender = () => {
-  const navigate = useNavigate();
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
+
+  const navigate = useNavigate();
+
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -157,7 +161,7 @@ const Calender = () => {
         )}
       </div>
       <div className="bg-[#3287fd] w-[10%] text-white text-2xl flex justify-center ">
-        <button onClick={handleSearch}>Search</button>
+        <button  onClick={handleSearch}>Search</button>
       </div>
     </div>
   );

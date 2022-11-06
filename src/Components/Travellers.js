@@ -1,67 +1,50 @@
 import React from "react";
+import useFetch from "../Hooks/useFetch";
 import image from "../Image/globle.jpg";
 const Travellers = () => {
+  const { data, error, loading } = useFetch("/hotels?featured=true&limit=4");
+  console.log(data);
   return (
     <div className="mt-10">
-      <div className="text-3xl font-bold pb-4">
-        <h1>Connect with other travellers</h1>
-      </div>
-      <div className="flex gap-2 ">
-        <div className="w-1/3">
-          <img
-            alt=""
-            src={image}
-            className="w-full h-full overflow-hidden rounded-md"
-          />
-          <div>
-            <p className="font-bold text-xl ">Neemrana Hotel</p>
-            <p>Alwar</p>
-            <p className="font-bold text-md ">Starting from 1000RS</p>
-            <p className="mt-1">
-              Excellent{" "}
-              <span className="bg-blue-800 rounded text-sm p-1 text-white">
-                8.9
-              </span>
-            </p>
+      {loading ? (
+        "Loading... "
+      ) : (
+        <>
+          <div className="text-3xl font-bold pb-4">
+            <h1>Connect with other travellers</h1>
           </div>
-        </div>
-        <div className="w-1/3">
-          <img
-            alt=""
-            src={image}
-            className="w-full h-full overflow-hidden rounded-md"
-          />
-          <div>
-            <p className="font-bold text-xl ">Neemrana Hotel</p>
-            <p>Alwar</p>
-            <p className="font-bold text-md ">Starting from 1000RS</p>
-            <p className="mt-1">
-              Excellent{" "}
-              <span className="bg-blue-800 rounded text-sm p-1 text-white">
-                8.9
-              </span>
-            </p>
+          <div className="flex gap-2 ">
+            {data.map((item) => (
+              <>
+                <div className="w-1/3">
+                  <img
+                    alt=""
+                    src={image}
+                    className="w-full h-full overflow-hidden rounded-md"
+                  />
+                  <div>
+                    <p className="font-bold text-xl ">{item?.name}</p>
+                    <p>{item?.city}</p>
+                    <p className="font-bold text-md ">
+                      Starting from {item?.cheapestPrice}RS
+                    </p>
+                    {item.rating ? (
+                      <p className="mt-1">
+                        {item.ratingType}
+                        <span className="bg-blue-800 rounded text-sm p-1 ml-1 text-white">
+                          {item.rating}
+                        </span>
+                      </p>
+                    ) : (
+                      <p className="mt-1">Rating Unavailable</p>
+                    )}
+                  </div>
+                </div>
+              </>
+            ))}
           </div>
-        </div>
-        <div className="w-1/3">
-          <img
-            alt=""
-            src={image}
-            className="w-full h-full overflow-hidden rounded-md"
-          />
-          <div>
-            <p className="font-bold text-xl ">Neemrana Hotel</p>
-            <p>Alwar</p>
-            <p className="font-bold text-md ">Starting from 1000RS</p>
-            <p className="mt-1">
-              Excellent{" "}
-              <span className="bg-blue-800 rounded text-sm p-1 text-white">
-                8.9
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { BsArrowLeftSquareFill } from "react-icons/bs";
 import { BsArrowRightSquareFill } from "react-icons/bs";
 import { FaWindowClose } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import useFetch from "../Hooks/useFetch";
 import pic1 from "../Image/pic 1.jpg";
 import pic2 from "../Image/pic 2.jpg";
 import pic3 from "../Image/pic 3.jpg";
 import pic4 from "../Image/pic 4.jpg";
 import pic5 from "../Image/pic 5.jpg";
 import pic6 from "../Image/pic 6.jpg";
+
 import Subscription from "./Subscription";
 const images = [
   { image: pic1 },
@@ -18,7 +21,11 @@ const images = [
   { image: pic6 },
 ];
 
-const HotelHotelDetail = () => {
+const HotelDetail = () => {
+  const { id } = useParams();
+  console.log(id);
+  const { data, error, loading } = useFetch(`/hotels/find/${id}`);
+  // console.log(data);
   const [sliderNo, setSliderNo] = useState(0);
   const [openSlider, setOpenSlider] = useState(false);
   const handleOpen = (i) => {
@@ -40,15 +47,15 @@ const HotelHotelDetail = () => {
     <>
       <div className="w-full mt-6 ">
         <div className="flex justify-between w-full relative">
-          <h1 className="font-bold text-3xl ">Neemrana Hotel</h1>
+          <h1 className="font-bold text-3xl ">{data?.name}</h1>
           <button className="bg-[#3287fd] px-2 rounded text-white">
             Reserve or Book Now!
           </button>
         </div>
         <div>
-          <small>kesroli</small>
+          <small>{data?.city}</small>
           <p className="text-blue-600 font-bold">
-            Excellent location - 1km from center
+            Excellent location - {data?.distance} from center
           </p>
           <p className="text-red-500 font-bold">
             Book a stay over 5000 at this property and get a free airport texi
@@ -108,4 +115,4 @@ const HotelHotelDetail = () => {
   );
 };
 
-export default HotelHotelDetail;
+export default HotelDetail;

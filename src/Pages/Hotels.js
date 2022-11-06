@@ -16,7 +16,6 @@ const Hotels = () => {
       <div className="flex w-full gap-8 max-w-[80%] m-auto ">
         <HotelsSidebar />
         <HotelList />
-       
       </div>
     </>
   );

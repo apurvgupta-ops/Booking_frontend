@@ -8,7 +8,7 @@ const PropertyType = () => {
   return (
     <div className="mt-10">
       <div>
-        <h2 className="text-3xl font-bold">Travel with style</h2>
+        <h2 className="text-3xl font-bold">Property Types</h2>
         <p className="text-gray-500">
           Select an accommodation type to start browsing
         </p>
