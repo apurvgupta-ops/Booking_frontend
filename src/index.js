@@ -6,15 +6,18 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 // import PhoneBook from "./PhoneBook";
 import { SearchContexProvider } from "./Context/SearchContextProvider";
+import { AuthContexProvider } from "./Context/AuthContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <SearchContexProvider>
-    <BrowserRouter>
-      <App />
-      {/* <PhoneBook /> */}
-    </BrowserRouter>
-  </SearchContexProvider>
+  <AuthContexProvider>
+    <SearchContexProvider>
+      <BrowserRouter>
+        <App />
+        {/* <PhoneBook /> */}
+      </BrowserRouter>
+    </SearchContexProvider>
+  </AuthContexProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

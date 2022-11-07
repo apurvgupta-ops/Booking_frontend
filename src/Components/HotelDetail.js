@@ -26,9 +26,9 @@ const HotelDetail = () => {
   const { id } = useParams();
   // console.log(id);
   const { data, error, loading } = useFetch(`/hotels/find/${id}`);
-  // console.log(data);
+  console.log(data);
   const { city, dates, options } = useContext(SearchContext);
-  // console.log(dates);
+  console.log(options.room);
   const [sliderNo, setSliderNo] = useState(0);
   const [openSlider, setOpenSlider] = useState(false);
   const handleOpen = (i) => {
@@ -46,6 +46,15 @@ const HotelDetail = () => {
 
     setSliderNo(newSlideNo);
   };
+
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const dayDiff = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return dayDiff;
+  }
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  console.log(days);
   return (
     <>
       <div className="w-full mt-6 ">
@@ -112,10 +121,11 @@ const HotelDetail = () => {
             like the location — they rated it 8.0 for a two-person trip.
           </div>
           <div className="bg-blue-100 p-4 rounded flex flex-col gap-4 justify-center">
-            <h4 className="font-bold">Perfect for a 9-night stay!</h4>
+            <h4 className="font-bold">Perfect for a night stay!</h4>
             <p>located near to railway station excellent location 9.8 rating</p>
             <h1 className="font-bold text-xl">
-              1000 Rs <span>(9 nights)</span>
+              {days * data?.cheapestPrice * options?.room} Rs{" "}
+              <span>({days} night)</span>
             </h1>
             <button className="bg-[#3287fd] p-2 rounded text-white">
               Reserve or Book Now!

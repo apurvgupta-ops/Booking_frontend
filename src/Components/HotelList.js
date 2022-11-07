@@ -58,7 +58,7 @@ const HotelList = () => {
                 )}
 
                 <div className="flex flex-col">
-                  <span>₹1023</span>
+                  <span>₹{item?.cheapestPrice}</span>
                   <span>+₹ 1,368 taxes and charges</span>
                   <button
                     className="bg-[#0071ca] p-1 rounded text-white cursor-pointer"
