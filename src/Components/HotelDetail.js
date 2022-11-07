@@ -11,6 +11,7 @@ import pic3 from "../Image/pic 3.jpg";
 import pic4 from "../Image/pic 4.jpg";
 import pic5 from "../Image/pic 5.jpg";
 import pic6 from "../Image/pic 6.jpg";
+import RoomsDetails from "./RoomsDetails";
 
 import Subscription from "./Subscription";
 const images = [
@@ -31,9 +32,14 @@ const HotelDetail = () => {
   console.log(options.room);
   const [sliderNo, setSliderNo] = useState(0);
   const [openSlider, setOpenSlider] = useState(false);
+  const [openModel, setOpenModel] = useState(false);
   const handleOpen = (i) => {
     setSliderNo(i);
     setOpenSlider(true);
+  };
+
+  const handleModel = () => {
+    setOpenModel(true);
   };
 
   const handleMove = (direction) => {
@@ -53,16 +59,19 @@ const HotelDetail = () => {
     const dayDiff = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return dayDiff;
   }
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dayDifference(dates[0]?.endDate, dates[0]?.startDate);
   console.log(days);
   return (
     <>
       <div className="w-full mt-6 ">
         <div className="flex justify-between w-full relative">
           <h1 className="font-bold text-3xl ">{data?.name}</h1>
-          <button className="bg-[#3287fd] px-2 rounded text-white">
+          {/* <button
+            className="bg-[#3287fd] px-2 rounded text-white"
+            onClick={handleModel}
+          >
             Reserve or Book Now!
-          </button>
+          </button> */}
         </div>
         <div>
           <small>{data?.city}</small>
@@ -127,11 +136,15 @@ const HotelDetail = () => {
               {days * data?.cheapestPrice * options?.room} Rs{" "}
               <span>({days} night)</span>
             </h1>
-            <button className="bg-[#3287fd] p-2 rounded text-white">
+            <button
+              className="bg-[#3287fd] p-2 rounded text-white"
+              onClick={handleModel}
+            >
               Reserve or Book Now!
             </button>
           </div>
         </div>
+        {openModel && <RoomsDetails setOpenModel={setOpenModel} id={id} />}
       </div>
       {/* <div className="bg-[#003580] w-screen">
         <Subscription />
